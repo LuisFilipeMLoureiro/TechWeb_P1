@@ -1,0 +1,7 @@
+CREATE DATABASE projeto1;
+USE projeto1;
+CREATE TABLE controle (id INT NOT NULL AUTO_INCREMENT, usuario VARCHAR(32) NOT NULL, password VARCHAR(32) NOT NULL);
+INSERT INTO controle (usuario, password) VALUES ("luisfml",123);
+CREATE TABLE Tarefa (id INT NOT NULL AUTO_INCREMENT, titulo VARCHAR(32), descricao TEXT, importancia TEXT, usuario_id INT NOT NULL REFERENCES controle(id), PRIMARY KEY controle(id));
+INSERT INTO Tarefa(titulo,descricao,usuario_id,importancia) VALUES ("Acabar TechWeb", "Acabar projeto de TechWeb",1, 8);
+INSERT INTO Tarefa(titulo,descricao,usuario_id,importancia) VALUES ("Acabar APS de ModCom", "Finalizar quiz sobre Sistema ModCom",1, 5);

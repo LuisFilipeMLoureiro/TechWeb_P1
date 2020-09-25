@@ -15,7 +15,10 @@
 <body>
 
 
-
+<form action="Lista">
+<input type="hidden" name ="importancia" value="desc">
+<input type="submit" value="ordenar por importância decrescente">
+</form>
 <table border="1">
 <tr><td>ID</td><td>Título</td><td>Descrição</td><td>Importância</td></tr>
 

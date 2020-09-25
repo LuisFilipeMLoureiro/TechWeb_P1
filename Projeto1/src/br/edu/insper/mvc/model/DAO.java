@@ -20,7 +20,7 @@ public class DAO {
 	public List<Tarefa> getLista() throws SQLException{
 		List<Tarefa> tarefas = new ArrayList<Tarefa>();
 		
-		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Tarefa ORDER BY importancia DESC;");	
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Tarefa;");	
 		ResultSet rs = stmt.executeQuery();
 		
 		while(rs.next()) {
@@ -33,6 +33,28 @@ public class DAO {
 			
 			tarefas.add(tarefa);
 			
+		}
+		
+		rs.close();
+		stmt.close();
+		return tarefas;
+	}
+	
+	public List<Tarefa> getListaDesc() throws SQLException{
+		List<Tarefa> tarefas = new ArrayList<Tarefa>();
+		
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Tarefa ORDER BY importancia DESC;");	
+		ResultSet rs = stmt.executeQuery();
+		
+		while(rs.next()) {
+			Tarefa tarefa = new Tarefa();
+			tarefa.setId(rs.getInt("id"));
+			tarefa.setTitulo(rs.getString("titulo"));
+			tarefa.setDescricao(rs.getString("descricao"));
+			tarefa.setImportancia(rs.getInt("importancia"));
+			tarefa.setUsuario_id(rs.getInt("usuario_id"));
+			
+			tarefas.add(tarefa);
 		}
 		
 		rs.close();
@@ -81,6 +103,7 @@ public class DAO {
 			Login login = new Login();
 			login.setUsuario(rs.getString("usuario"));
 			login.setSenha(rs.getString("senha"));
+			//login.setId(rs.getInt("id"));
 			
 			
 			logins.add(login);

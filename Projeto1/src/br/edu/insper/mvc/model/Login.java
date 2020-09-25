@@ -4,8 +4,7 @@ public class Login {
 	
 	private String usuario;
 	private String senha;
-	
-	
+	// private Integer id;
 	
 	
 	public String getUsuario() {

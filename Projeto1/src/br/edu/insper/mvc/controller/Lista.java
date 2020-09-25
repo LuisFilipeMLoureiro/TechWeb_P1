@@ -50,9 +50,21 @@ public class Lista extends HttpServlet {
 	
 	protected void service (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAO dao;
+		List<Tarefa> tarefas = null;
 		try {
 			dao = new DAO();
-			List<Tarefa> tarefas = dao.getLista();
+			
+			String importancia = request.getParameter("importancia");
+			if (importancia != null && importancia.contentEquals("desc")) {
+				tarefas = dao.getListaDesc();
+			}
+			
+			else {
+				tarefas = dao.getLista();
+				
+			}
+			
+			
 			
 			request.setAttribute("tarefas", tarefas);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/Tabela.jsp");

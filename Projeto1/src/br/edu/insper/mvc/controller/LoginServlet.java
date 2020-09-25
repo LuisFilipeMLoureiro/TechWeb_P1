@@ -58,10 +58,13 @@ public class LoginServlet extends HttpServlet {
 			if (login.getSenha().contentEquals(senha) &&  login.getUsuario().contentEquals(usuario)) {
 				
 				controle=true;
+				//Integer id_atual = login.getId();
+				//request.setAttribute("id", id_atual);
 			}}
 				
 			if (controle == true)	{
-				// request.setAttribute("usuario", usuario);
+				
+				
 
 				RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/index.html");
 
